@@ -2,6 +2,13 @@ module.exports = {
   publicPath: process.env.NODE_ENV === 'production' ? '/vuetify-admin-template/' : '/',
   devServer: {
     disableHostCheck: true,
+    proxy: {
+      '/apiURL': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        pathRewrite: { '^/apiURL': '' },
+      },
+    }
   },
   transpileDependencies: [
     'vuetify'
