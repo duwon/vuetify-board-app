@@ -85,12 +85,6 @@ import VueCookies from 'vue-cookies'
 export default {
   name: 'DefaultBar',
   data: () => ({
-    user: {
-      signedIn: false,
-      Name: null,
-      Email: null,
-      Image: null,
-    },
     menus: [
       // { title: "Profile", icon: "mdi-account", to: 'Profile' },
       // { title: "Change Password", icon: "mdi-key", to: 'Change Password' },
@@ -105,6 +99,14 @@ export default {
       },
       set (value) {
         return this.$store.commit('app/setDrawer', value)
+      }
+    },
+    user: {
+      get () {
+        return this.$store.getters['account/getInfo']
+      },
+      set (value) {
+        return this.$store.commit('account/setInfo', value)
       }
     }
   },
