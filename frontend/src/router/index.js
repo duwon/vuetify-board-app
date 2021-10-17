@@ -99,6 +99,14 @@ const routes = [
           '@/views/Icons'
         )
       },
+      {
+        path: '/board',
+        name: 'Board',
+        component: () => import(
+          /* webpackChunkName: "views-icons" */
+          '@/views/board/ListView'
+        )
+      },
     ]
   },
   {
@@ -142,6 +150,11 @@ const routes = [
         )
       },
     ]
+  },
+  {
+    path: '*',
+    name: 'e404',
+    component: () => import('@/views/e404.vue')
   }
 ]
 const router = new VueRouter({
